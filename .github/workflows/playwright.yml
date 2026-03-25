@@ -22,7 +22,19 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npm run test:report
+      if: always()
+    - name: Get Allure history
+      uses: actions/checkout@v4
+      if: always()
       continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+    - name: Allure Report action from manual
+      run: |
+        mkdir -p allure-results/history
+        cp -R gh-pages/history/* allure-results/history/ || true
+      if: always()
     - name: Generate Allure Report
       run: npm run report:generate
       if: always()
