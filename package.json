@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:report": "npx playwright test --reporter=allure-playwright",
-    "report:generate": "allure generate allure-results --clean -o allure-report",
-    "report:open": "allure open allure-report",
-    "test:headed": "npx playwright test --headed"
+    "withReport": "npx playwright test --reporter=allure-playwright",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "testhead": "npx playwright test --headed"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +15,6 @@
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.5.0",
-    "allure-commandline": "^2.38.1",
     "allure-playwright": "^3.6.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"

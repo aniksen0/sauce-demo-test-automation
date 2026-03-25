@@ -8,6 +8,7 @@ test.describe('Product Catalog Scenarios', () => {
   let productsPage;
 
   test.beforeEach(async ({ page }) => {
+    console.log("catalog setup started");
     loginPage = new LoginPage(page);
     productsPage = new ProductsPage(page);
     await loginPage.navigteTo('/');
@@ -15,6 +16,7 @@ test.describe('Product Catalog Scenarios', () => {
   });
 
   test('TC-008 Product listing loads correctly', async () => {
+    console.log("checking product list");
     const count = await productsPage.getProducktCount();
     expect(count).toBe(6);
     const names = await productsPage.getProducktNames();
@@ -23,9 +25,11 @@ test.describe('Product Catalog Scenarios', () => {
     const prices = await productsPage.getProducktPrices();
     expect(prices.length).toBe(6);
     expect(prices[0]).toContain('$');
+    console.log("inventory verified");
   });
 
   test('TC-009 Sorting by Name A-Z and Z-A', async () => {
+    console.log("testing name sorting");
     let names = await productsPage.getProducktNames();
     let sortedNames = [...names].sort();
     expect(names).toEqual(sortedNames);
@@ -33,9 +37,11 @@ test.describe('Product Catalog Scenarios', () => {
     names = await productsPage.getProducktNames();
     sortedNames = [...names].sort().reverse();
     expect(names).toEqual(sortedNames);
+    console.log("sorting verified");
   });
 
   test('TC-010 Sorting by Price Low-High and High-Low', async () => {
+    console.log("testing price sorting");
     await productsPage.sortProdukts('lohi');
     let prices = (await productsPage.getProducktPrices()).map(p => parseFloat(p.replace('$', '')));
     let sortedPrices = [...prices].sort((a, b) => a - b);
@@ -44,13 +50,16 @@ test.describe('Product Catalog Scenarios', () => {
     prices = (await productsPage.getProducktPrices()).map(p => parseFloat(p.replace('$', '')));
     sortedPrices = [...prices].sort((a, b) => b - a);
     expect(prices).toEqual(sortedPrices);
+    console.log("price sorting verified");
   });
 
   test('TC-011 Problem user visual regression - Detect broken images', async ({ page }) => {
+    console.log("visual test started");
     await page.locator('#react-burger-menu-btn').click();
     await page.locator('#logout_sidebar_link').click();
     await loginPage.login(data.users.problem_user.username, data.users.problem_user.password);
     const allImagesOk = await productsPage.allImagesAreVisble();
     expect(allImagesOk).toBeFalsy();
+    console.log("visual glitches detected");
   });
 });
