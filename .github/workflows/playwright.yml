@@ -4,8 +4,9 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 jobs:
-  test:
+  test-execution:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     permissions:
