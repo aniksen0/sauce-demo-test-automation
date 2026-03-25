@@ -1,0 +1,3 @@
+starting auth setup
+security test started
+security check finished

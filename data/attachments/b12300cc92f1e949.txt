@@ -1,0 +1,4 @@
+starting auth setup
+session test started
+page 1 ready
+page 2 ready
