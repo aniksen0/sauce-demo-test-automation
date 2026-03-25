@@ -1,5 +1,6 @@
 # SauceDemo Playwright Automation Framework
 
+![Playwright Tests](https://github.com/aniksen0/sauce-demo-test-automation/actions/workflows/playwright.yml/badge.svg)
 
 This repository contains a professional-grade test automation framework for [SauceDemo](https://www.saucedemo.com/) using **Playwright** and **JavaScript**.
 
