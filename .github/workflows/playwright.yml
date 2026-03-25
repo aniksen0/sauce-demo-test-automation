@@ -8,6 +8,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -18,20 +20,24 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npm run test:report
+      continue-on-error: true
     - name: Generate Allure Report
-      run: |
-        npm install -g allure-commandline
-        allure generate allure-results --clean -o allure-report
+      run: npm run report:generate
       if: always()
-    - name: Upload Allure Report
-      uses: actions/upload-artifact@v4
+    - name: Upload Allure Report to GitHub Pages
       if: always()
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        name: allure-report
-        path: allure-report/
-        retention-days: 30
-    - uses: actions/upload-artifact@v4
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report
+    - name: Add Report Link to Job Summary
+      run: |
+        echo "### 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
+        echo "The latest test report is available here: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
+      if: always()
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report
