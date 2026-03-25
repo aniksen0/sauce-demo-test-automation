@@ -1,0 +1,3 @@
+starting auth setup
+login test started
+login success verified

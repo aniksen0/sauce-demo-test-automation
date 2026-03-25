@@ -1,0 +1,3 @@
+catalog setup started
+visual test started
+visual glitches detected

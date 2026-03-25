@@ -1,0 +1,5 @@
+checkout setup started
+testing missing fields
+checking first name validation
+checking last name validation
+checking zip validation

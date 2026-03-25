@@ -1,0 +1,3 @@
+starting auth setup
+empty login test started
+error message checked
