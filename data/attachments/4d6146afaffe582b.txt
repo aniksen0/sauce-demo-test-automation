@@ -1,4 +1,4 @@
 setup resilience test
 loading performance test
 network idle complete
-Login finished in 5.135 seconds
+Login finished in 5.664 seconds
