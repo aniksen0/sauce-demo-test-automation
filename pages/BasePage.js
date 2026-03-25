@@ -33,6 +33,7 @@ class BasePage {
 
   async waitforNetworkIdl() {
     await this.page.waitForLoadState('networkidle');
+    console.log("network idle complete");
   }
 }
 

@@ -43,13 +43,20 @@ test.describe('Product Catalog Scenarios', () => {
   test('TC-010 Sorting by Price Low-High and High-Low', async () => {
     console.log("testing price sorting");
     await productsPage.sortProdukts('lohi');
-    let prices = (await productsPage.getProducktPrices()).map(p => parseFloat(p.replace('$', '')));
-    let sortedPrices = [...prices].sort((a, b) => a - b);
-    expect(prices).toEqual(sortedPrices);
+    const prices = await productsPage.getProducktPrices();
+    for (let i = 0; i < prices.length - 1; i++) {
+      const current = parseFloat(prices[i].replace('$', ''));
+      const next = parseFloat(prices[i+1].replace('$', ''));
+      expect(current).toBeLessThanOrEqual(next);
+    }
+    
     await productsPage.sortProdukts('hilo');
-    prices = (await productsPage.getProducktPrices()).map(p => parseFloat(p.replace('$', '')));
-    sortedPrices = [...prices].sort((a, b) => b - a);
-    expect(prices).toEqual(sortedPrices);
+    const pricesHighLow = await productsPage.getProducktPrices();
+    for (let i = 0; i < pricesHighLow.length - 1; i++) {
+      const current = parseFloat(pricesHighLow[i].replace('$', ''));
+      const next = parseFloat(pricesHighLow[i+1].replace('$', ''));
+      expect(current).toBeGreaterThanOrEqual(next);
+    }
     console.log("price sorting verified");
   });
 
