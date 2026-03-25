@@ -1,0 +1,35 @@
+{
+  "users": {
+    "standard_user": {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "description": "Normal user"
+    },
+    "locked_out_user": {
+      "username": "locked_out_user",
+      "password": "secret_sauce",
+      "description": "Locked out"
+    },
+    "problem_user": {
+      "username": "problem_user",
+      "password": "secret_sauce",
+      "description": "UI glitches"
+    },
+    "performance_glitch_user": {
+      "username": "performance_glitch_user",
+      "password": "secret_sauce",
+      "description": "Slow responses"
+    },
+    "error_user": {
+      "username": "error_user",
+      "password": "secret_sauce",
+      "description": "Errors on actions"
+    },
+    "invalid_user": {
+      "username": "invalid_user",
+      "password": "wrong_password",
+      "description": "Invalid credentials"
+    }
+  },
+  "baseUrl": "https://www.saucedemo.com/"
+}
