@@ -1,0 +1,3 @@
+starting auth setup
+logout test started
+user logged out successfully
