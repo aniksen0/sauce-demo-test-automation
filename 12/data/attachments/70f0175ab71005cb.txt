@@ -1,0 +1,3 @@
+starting auth setup
+locked user test started
+lock status verified
