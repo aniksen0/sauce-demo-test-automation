@@ -5,15 +5,30 @@ class Helpers {
   }
 
   static async checkBrokenImages(page, selector) {
-    const images = await page.locator(selector).all();
-    const broken = [];
-    for (const img of images) {
-      const src = await img.getAttribute('src');
-      if (!src || src.includes('sl-404')) {
-        broken.push(await img.getAttribute('alt') || 'Unknown item');
+    const allImages = await page.locator(selector).all();
+
+    const brokenImageNames = [];
+
+    for (let i = 0; i < allImages.length; i++) {
+      const currentImage = allImages[i];
+
+      const imageSource = await currentImage.getAttribute('src');
+
+      const hasNoSource = !imageSource;
+      const isNotFoundImage = imageSource && imageSource.includes('sl-404');
+
+      if (hasNoSource || isNotFoundImage) {
+        const imageName = await currentImage.getAttribute('alt');
+
+        if (imageName) {
+          brokenImageNames.push(imageName);
+        } else {
+          brokenImageNames.push('Unknown item');
+        }
       }
     }
-    return broken;
+
+    return brokenImageNames;
   }
 }
 
