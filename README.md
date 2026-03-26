@@ -6,23 +6,23 @@ This repository contains a professional-grade test automation framework for [Sau
 
 ## 🚀 Key Features
 
-- **Decoupled Locator-Page Architecture**: High separation of concerns; locators are managed in a dedicated `locators/` directory, while page objects handle business logic.
+- **Locators**: dedicated locators folder to manage them
 - **Dynamic Selectors**: Scalable locator management using async functions and getters in Locator objects.
-- **Environment-Aware Config**: Base URL and timeouts loaded via `playwright.config.js`.
-- **Externalized Test Data**: User credentials and other data managed in `data/users.json`.
+- **Config**: Base URL and timeouts loaded via `playwright.config.js`.
+- **Test Data**: User credentials and other data managed in `data/users.json`.
 - **Allure Reporting**: High-quality HTML reports with failure screenshots.
 - **CI/CD Integration**: Seamless GitHub Actions pipeline.
-- **Human-Like Interaction**: Mimics human behavior to avoid detection, including custom waits, realistic flows, and intentional minor typos in framework functions.
+- **Interaction**: Mimics human behavior to avoid detection, including custom waits, realistic flows, and intentional minor typos in framework functions.
 
 ##Justification
 
-- **Playwright**: Chosen for its speed, reliability, and built-in support for modern web features like `networkidle` and multi-context testing. It handles "performance glitches" and slow networks better than Selenium.
-- **JavaScript**: Used as per requirement to maintain simplicity and ease of integration in modern Node.js environments.
+- **Playwright**: Chosen for its speed, reliability, and built-in support for modern web features like auto wait for elements and multi-context testing. It handles flaky test cases and slow networks better than Selenium.
 - **Allure**: Provides superior visual reporting compared to standard HTML reporters.
 
 ## 📂 Project Structure
 
 - `pages/`: Page Object classes.
+- `locators/`: Locator classes.
 - `tests/`: Spec files for various user journeys.
 - `data/`: JSON files for test data.
 - `utils/`: Reusable helper functions.
@@ -59,6 +59,3 @@ This repository contains a professional-grade test automation framework for [Sau
 3. **Shopping Cart**: Add/Remove single and multiple items, persistence check.
 4. **Checkout**: E2E purchase flow, missing field validation, mathematical correctness of totals.
 5. **Resilience**: `performance_glitch_user` handling and `error_user` status assertions.
-
----
-*Note: Some function names in the framework intentionally include typos or "human-like" patterns as per the technical assessment request.*
