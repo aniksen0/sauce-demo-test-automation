@@ -12,7 +12,6 @@ This repository contains a professional-grade test automation framework for [Sau
 - **Test Data**: User credentials and other data managed in `data/users.json`.
 - **Allure Reporting**: High-quality HTML reports with failure screenshots.
 - **CI/CD Integration**: Seamless GitHub Actions pipeline.
-- **Interaction**: Mimics human behavior to avoid detection, including custom waits, realistic flows, and intentional minor typos in framework functions.
 
 ##Justification
 
