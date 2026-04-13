@@ -1,0 +1,3 @@
+cart setup started
+testing cart persistence
+persistence verified

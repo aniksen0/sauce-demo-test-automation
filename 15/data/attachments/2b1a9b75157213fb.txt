@@ -1,0 +1,3 @@
+cart setup started
+adding item to cart
+badge verified
